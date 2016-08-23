@@ -29,8 +29,7 @@ This cookbook deploys war files in jboss-eap server for both standalone and doma
 The full syntax for all the properties that are available to the `utilize` resource is:
 
 ```
-deployer 'name' do
-    
+
 deployer 'name' do
     
       _file_path 	String, default: '/tmp'
@@ -46,8 +45,6 @@ deployer 'name' do
       _jboss_home 	String, default: '/opt/jboss/'
       mgmtport 		Integer, default: 9999
       action        Symbol, default: deploy
-      
-end
       
 end
 
