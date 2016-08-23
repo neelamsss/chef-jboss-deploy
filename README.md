@@ -81,6 +81,10 @@ Just include `jboss-deploy` in your node's `run_list`:
 }
 ```
 
+## Clone
+
+git clone https://github.com/jantwisted/chef-jboss-deploy.git
+
 ## Contributing
 
 1. Fork the repository on Github
