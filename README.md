@@ -1,6 +1,6 @@
 # jboss-deploy Cookbook
 
-This cookbook deploys war files in jboss-eap server for both standalone and domain modes. 
+This cookbook deploys war files in jboss-eap server for both `standalone` and `domain` modes. 
 
 ## Requirements
 
