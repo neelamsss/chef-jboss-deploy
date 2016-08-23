@@ -13,9 +13,6 @@ This cookbook deploys war files in jboss-eap server for both `standalone` and `d
 
 - Chef 12.0 or later
 
-### Cookbooks
-
-- `toaster` - jboss-deploy needs toaster to brown your bagel.
 
 ## Attributes
 
