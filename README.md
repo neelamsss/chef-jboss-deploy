@@ -31,19 +31,23 @@ The full syntax for all the properties that are available to the `utilize` resou
 ```
 deployer 'name' do
     
-      _file_path, String, default: '/tmp'
-      _owner, String, default: 'root'
-      _group, String, default: 'root'
-      _mode, String, default: '644'
-      _package_url, String
-      _checksum, String
-      _module_name, String
-      _host, String, default: '127.0.0.1'
-      _offset, Integer, default: 0
-      _jboss_mode, String, default: 'standalone'
-      _jboss_home, String, default: '/opt/jboss/'
-      mgmtport, Integer, default: 9999
-      action              Symbol, default: deploy
+deployer 'name' do
+    
+      _file_path 	String, default: '/tmp'
+      _owner 		String, default: 'root'
+      _group 		String, default: 'root'
+      _mode 		String, default: '644'
+      _package_url 	String
+      _checksum 	String
+      _module_name 	String
+      _host 		String, default: '127.0.0.1'
+      _offset 		Integer, default: 0
+      _jboss_mode 	String, default: 'standalone'
+      _jboss_home 	String, default: '/opt/jboss/'
+      mgmtport 		Integer, default: 9999
+      action        Symbol, default: deploy
+      
+end
       
 end
 
