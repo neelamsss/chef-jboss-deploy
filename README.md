@@ -24,9 +24,9 @@ This cookbook deploys war files in jboss-eap server for both standalone and doma
 
 ## Custom Resources
 
-### utilize
+### deployer
 
-The full syntax for all the properties that are available to the `utilize` resource is:
+The full syntax for all the properties that are available to the `deployer` resource is:
 
 ```
 
