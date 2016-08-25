@@ -1,6 +1,6 @@
 resource_name :deployer
 
-property :_file_path, String, default: '/tmp'
+property :_file_loc, String, default: '/tmp'
 property :_owner, String, default: 'root'
 property :_group, String, default: 'root'
 property :_mode, String, default: '644'
@@ -21,7 +21,7 @@ property :_sub_undeploy, String, default: lazy {
 
 action :deploy do
   
-   remote_file _file_path+'/'+_module_name do
+   remote_file _file_loc+'/'+_module_name do
      source _package_url
      owner _owner
      group _group
@@ -36,7 +36,7 @@ action :deploy do
 	    _host+':'+
 	    "#{mgmtport+_offset}"+
 	    ' --commands="deploy '+
-	    _file_path+'//'+
+	    _file_loc+'//'+
 	    _module_name+' '+
 	    _sub_deploy+'"'
    end
