@@ -1,4 +1,4 @@
-resource_name :module
+resource_name :jmodule
 
 
 property :_owner, String, default: 'root'
@@ -11,24 +11,28 @@ property :mgmtport, Integer, default: 9999
 property :_jdbc_loc, String
 property :_dep_list, String
 property :_jdbc_driver_name, String
+property :_class_name, String
 
 action :create do 
 
-    execute 'module-add' do
- 	user _owner
- 	command _jboss_home+
-	    '/bin/jboss-cli.sh --connect controller='+
-	    _host+':'+
-	    "#{mgmtport+_offset}"+
-	    ' --commands="module add --name='+_module_name+' --resources='+_jdbc_loc+' --dependencies='+_dep_list+'"'
-     end
-     execute 'install-jdbc' do
-       user _owner
-       command _jboss_home+
-	    '/bin/jboss-cli.sh --connect controller='+
-	    _host+':'+
-	    "#{mgmtport+_offset}"+
-	    ' --commands="/subsystem=datasources/jdbc-driver='+_jdbc_driver_name+':add(driver-name='+_jdbc_driver_name+',driver-module-name='+_module_name+')"'
-     end
+  execute 'module-add' do
+    user _owner
+    command _jboss_home+
+      '/bin/jboss-cli.sh --connect controller='+
+      _host+':'+
+      "#{mgmtport+_offset}"+
+      ' --commands="module add --name='+_module_name+' --resources='+_jdbc_loc+' --dependencies='+_dep_list+'"'
+  end
+  execute 'install-jdbc' do
+    user _owner
+    command _jboss_home+
+      '/bin/jboss-cli.sh --connect controller='+
+      _host+':'+
+      "#{mgmtport+_offset}"+
+      ' --commands="/subsystem=datasources/jdbc-driver='+
+      _jdbc_driver_name+':add(driver-name='+
+      _jdbc_driver_name+',driver-module-name='+
+      _module_name+',driver-class-name='+_class_name+')"'
+  end
 
 end
