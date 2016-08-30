@@ -41,7 +41,7 @@ deployer 'name' do
       _jboss_mode 	String, default: 'standalone'
       _jboss_home 	String, default: '/opt/jboss/'
       mgmtport 		Integer, default: 9999
-      action        	Symbol, default: deploy
+      action        Symbol, default: deploy
       
 end
 
@@ -81,7 +81,7 @@ jmodule 'name' do
       _dep_list		String
       _jdbc_driver_name	String
       _class_name	String
-      action        	Symbol, default: deploy
+      action        Symbol, default: deploy
       
 end
 
