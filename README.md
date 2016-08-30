@@ -70,7 +70,6 @@ The full syntax for all the properties that are available to the `jmodule` resou
 
 jmodule 'name' do
     
-<<<<<<< HEAD
       owner 		String, default: 'root'
       module_name 	String
       host 		String, default: '127.0.0.1'
@@ -82,20 +81,6 @@ jmodule 'name' do
       jdbc_driver_name	String
       class_name	String
       action        	Symbol, default: create
-=======
-      _owner 		    String, default: 'root'
-      _module_name 	    String
-      _host 		    String, default: '127.0.0.1'
-      _offset 		    Integer, default: 0
-      _jboss_mode 	    String, default: 'standalone'
-      _jboss_home 	    String, default: '/opt/jboss/'
-      mgmtport 		    Integer, default: 9999
-      _jdbc_loc		    String
-      _dep_list		    String
-      _jdbc_driver_name	String
-      _class_name	    String
-      action            Symbol, default: deploy
->>>>>>> 9bd47123648ec0974a76a67260156a037f177bdd
       
 end
 
