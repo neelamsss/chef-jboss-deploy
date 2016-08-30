@@ -123,6 +123,7 @@ datasource 'name' do
       
 end
 
+```
 
 * `owner` - the OS user.
 * `module_name` - defines the name of the module
