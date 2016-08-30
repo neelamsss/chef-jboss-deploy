@@ -1,5 +1,4 @@
 resource_name :deployer
-
 property :file_loc, String, default: '/tmp'
 property :owner, String, default: 'root'
 property :group, String, default: 'root'
@@ -13,10 +12,10 @@ property :jboss_mode, String, default: 'standalone'
 property :jboss_home, String, default: '/opt/jboss/'
 property :mgmtport, Integer, default: 9999
 property :sub_deploy, String, default: lazy {
-    _jboss_mode == 'domain' ? '--server-groups=main-server-group' : ''
+    jboss_mode == 'domain' ? '--server-groups=main-server-group' : ''
   }
 property :_sub_undeploy, String, default: lazy {
-    _jboss_mode == 'domain' ? '--all-relevant-server-groups' : ''
+    jboss_mode == 'domain' ? '--all-relevant-server-groups' : ''
   }
 
 action :deploy do
@@ -50,7 +49,7 @@ action :undeploy do
  	command jboss_home+
 	    '/bin/jboss-cli.sh --connect controller='+
 	    host+':'+
-	    "#{mgmtport+_offset}"+
+	    "#{mgmtport+offset}"+
 	    ' --commands="undeploy '+
 	    module_name+' '+
 	    sub_undeploy+'"'
