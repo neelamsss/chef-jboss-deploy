@@ -1,6 +1,4 @@
 resource_name :jmodule
-
-
 property :owner, String, default: 'root'
 property :module_name, String
 property :host, String, default: '127.0.0.1'
@@ -28,7 +26,7 @@ action :create do
     command jboss_home+
       '/bin/jboss-cli.sh --connect controller='+
       host+':'+
-      "#{mgmtport+_offset}"+
+      "#{mgmtport+offset}"+
       ' --commands="/subsystem=datasources/jdbc-driver='+
       jdbc_driver_name+':add(driver-name='+
       jdbc_driver_name+',driver-module-name='+
