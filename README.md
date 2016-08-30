@@ -29,7 +29,7 @@ The full syntax for all the properties that are available to the `deployer` reso
 
 deployer 'name' do
     
-      _file_path 	String, default: '/tmp'
+      _file_loc 	String, default: '/tmp'
       _owner 		String, default: 'root'
       _group 		String, default: 'root'
       _mode 		String, default: '644'
@@ -41,14 +41,14 @@ deployer 'name' do
       _jboss_mode 	String, default: 'standalone'
       _jboss_home 	String, default: '/opt/jboss/'
       mgmtport 		Integer, default: 9999
-      action        Symbol, default: deploy
+      action        	Symbol, default: deploy
       
 end
 
 ```
 where
 
-* `_file_path` is the temporary download location.
+* `_file_loc` is the temporary download location.
 * `_owner` is the OS user.
 * `_group` is the OS user group.
 * `_mode` defines the permissions.
@@ -61,6 +61,45 @@ where
 * `_jboss_home` is the location of Jboss home directory.
 * `mgmtport` is the Jboss management port.
 * `action` must be set as `deploy` or `undeploy`.
+
+### jmodule
+
+The full syntax for all the properties that are available to the `jmodule` resource is:
+
+```
+
+jmodule 'name' do
+    
+      _owner 		String, default: 'root'
+      _module_name 	String
+      _host 		String, default: '127.0.0.1'
+      _offset 		Integer, default: 0
+      _jboss_mode 	String, default: 'standalone'
+      _jboss_home 	String, default: '/opt/jboss/'
+      mgmtport 		Integer, default: 9999
+      _jdbc_loc		String
+      _dep_list		String
+      _jdbc_driver_name	String
+      _class_name	String
+      action        	Symbol, default: deploy
+      
+end
+
+
+```
+where
+
+* `_owner` is the OS user.
+* `_module_name` defines the name of the module
+* `_host` host name for `cli` access.
+* `_offset` defines the offset of the jboss instances.
+* `_jboss_home` is the location of Jboss home directory.
+* `mgmtport` is the Jboss managment port.
+* `_jdbc_loc` is the location of `jdbc` driver.
+* `_dep_list` defines the dependency list for `jdbc` driver.
+* `_jdbc_driver_name` is the name of the driver.
+* `_class_name` specify fully qualified class.
+* `action` must be set as `create`.
 
 
 ## Usage
