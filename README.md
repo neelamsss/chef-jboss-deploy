@@ -100,9 +100,9 @@ where
 * `class_name` - defines the fully qualified class.
 * `action` must be set as `create`.
 
-### jmodule
+### datasource
 
-The full syntax for all the properties that are available to the `jmodule` resource is:
+The full syntax for all the properties that are available to the `datasource` resource is:
 
 ```
 
