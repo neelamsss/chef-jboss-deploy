@@ -29,17 +29,17 @@ The full syntax for all the properties that are available to the `deployer` reso
 
 deployer 'name' do
     
-      _file_loc 	String, default: '/tmp'
-      _owner 		String, default: 'root'
-      _group 		String, default: 'root'
-      _mode 		String, default: '644'
-      _package_url 	String
-      _checksum 	String
-      _module_name 	String
-      _host 		String, default: '127.0.0.1'
-      _offset 		Integer, default: 0
-      _jboss_mode 	String, default: 'standalone'
-      _jboss_home 	String, default: '/opt/jboss/'
+      file_loc		String, default: '/tmp'
+      owner 		String, default: 'root'
+      group 		String, default: 'root'
+      mode 		String, default: '644'
+      package_url 	String
+      checksum 		String
+      module_name 	String
+      host 		String, default: '127.0.0.1'
+      offset 		Integer, default: 0
+      jboss_mode 	String, default: 'standalone'
+      jboss_home 	String, default: '/opt/jboss/'
       mgmtport 		Integer, default: 9999
       action        	Symbol, default: deploy
       
@@ -48,18 +48,18 @@ end
 ```
 where
 
-* `_file_loc` is the temporary download location.
-* `_owner` is the OS user.
-* `_group` is the OS user group.
-* `_mode` defines the permissions.
-* `_package_url` is the package URL.
-* `_checksum` is the checksum of the package. (sha256)
-* `_module_name` defines the name of the module.
-* `_host` host name for `cli` access.
-* `_offset` defines the offset of the jboss instances.
-* `_jboss_mode` defines the jboss mode, default `standalone`.
-* `_jboss_home` is the location of Jboss home directory.
-* `mgmtport` is the Jboss management port.
+* `file_loc` - determines the package download location. (temporary)
+* `owner` - the OS user.
+* `group` - the OS user group.
+* `mode` - defines the permissions.
+* `package_url` - the package URL.
+* `checksum` - the checksum of the package. (sha256)
+* `module_name` - defines the name of the module.
+* `host` - the host name for `cli` access.
+* `offset` - specifies the offset of the jboss instances.
+* `jboss_mode` -  defines the jboss mode, default `standalone`.
+* `jboss_home` - Jboss home directory.
+* `mgmtport` - Jboss management port.
 * `action` must be set as `deploy` or `undeploy`.
 
 ### jmodule
@@ -70,18 +70,17 @@ The full syntax for all the properties that are available to the `jmodule` resou
 
 jmodule 'name' do
     
-      _owner 		String, default: 'root'
-      _module_name 	String
-      _host 		String, default: '127.0.0.1'
-      _offset 		Integer, default: 0
-      _jboss_mode 	String, default: 'standalone'
-      _jboss_home 	String, default: '/opt/jboss/'
+      owner 		String, default: 'root'
+      module_name 	String
+      host 		String, default: '127.0.0.1'
+      offset 		Integer, default: 0
+      jboss_home 	String, default: '/opt/jboss/'
       mgmtport 		Integer, default: 9999
-      _jdbc_loc		String
-      _dep_list		String
-      _jdbc_driver_name	String
-      _class_name	String
-      action        	Symbol, default: deploy
+      jdbc_loc		String
+      dep_list		String
+      jdbc_driver_name	String
+      class_name	String
+      action        	Symbol, default: create
       
 end
 
@@ -89,16 +88,52 @@ end
 ```
 where
 
-* `_owner` is the OS user.
-* `_module_name` defines the name of the module
-* `_host` host name for `cli` access.
-* `_offset` defines the offset of the jboss instances.
-* `_jboss_home` is the location of Jboss home directory.
-* `mgmtport` is the Jboss managment port.
-* `_jdbc_loc` is the location of `jdbc` driver.
-* `_dep_list` defines the dependency list for `jdbc` driver.
-* `_jdbc_driver_name` is the name of the driver.
-* `_class_name` specify fully qualified class.
+* `owner` - the OS user.
+* `module_name` - defines the name of the module
+* `host` - the host name for `cli` access.
+* `offset` - specifies the offset of the jboss instances.
+* `jboss_home` - Jboss home directory.
+* `mgmtport` - Jboss management port.
+* `jdbc_loc` - `jdbc` driver location.
+* `dep_list` - specifies the list of dependencies.
+* `jdbc_driver_name` - defines the driver name.
+* `class_name` - defines the fully qualified class.
+* `action` must be set as `create`.
+
+### jmodule
+
+The full syntax for all the properties that are available to the `jmodule` resource is:
+
+```
+
+datasource 'name' do
+
+      owner 		String, default: 'root'
+      host 		String, default: '127.0.0.1'
+      offset 		Integer, default: 0
+      jboss_home 	String, default: '/opt/jboss/'
+      mgmtport 		Integer, default: 9999
+      jdbc_loc		String
+      dep_list		String
+      jdbc_driver_name	String
+      class_name	String
+      user		String
+      password		String
+      action        	Symbol, default: create
+      
+end
+
+
+* `owner` - the OS user.
+* `module_name` - defines the name of the module
+* `host` - the host name for `cli` access.
+* `offset` - specifies the offset of the jboss instances.
+* `jboss_home` - Jboss home directory.
+* `mgmtport` - Jboss management port.
+* `jdbc_loc` - `jdbc` driver location.
+* `dep_list` - specifies the list of dependencies.
+* `jdbc_driver_name` - defines the driver name.
+* `class_name` - defines the fully qualified class.
 * `action` must be set as `create`.
 
 
