@@ -21,6 +21,7 @@ action :create do
       "#{mgmtport+offset}"+
       ' --commands="module add --name='+module_name+' --resources='+jdbc_loc+' --dependencies='+dep_list+'"'
   end
+  
   execute 'install-jdbc' do
     user owner
     command jboss_home+
