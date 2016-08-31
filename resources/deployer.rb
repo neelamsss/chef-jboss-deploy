@@ -14,7 +14,7 @@ property :mgmtport, Integer, default: 9999
 property :sub_deploy, String, default: lazy {
     jboss_mode == 'domain' ? '--server-groups=main-server-group' : ''
   }
-property :_sub_undeploy, String, default: lazy {
+property :sub_undeploy, String, default: lazy {
     jboss_mode == 'domain' ? '--all-relevant-server-groups' : ''
   }
 

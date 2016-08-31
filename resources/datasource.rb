@@ -6,7 +6,7 @@ property :jboss_mode, String, default: 'standalone'
 property :jboss_home, String, default: '/opt/jboss/'
 property :mgmtport, Integer, default: 9999
 property :jdbc_driver_name, String
-property :user, String
+property :username, String
 property :password, String
 property :dt_name, String
 property :connection_url, String
@@ -23,7 +23,7 @@ action :create do
       ' --commands="data-source add --jndi-name=java:/'+
       jndi_name+' --name='+dt_name+' --connection-url='+
       connection_url+' --driver-name='+jdbc_driver_name+
-      ' --user-name='+user+' --password='+password+' --enabled=true"'
+      ' --user-name='+username+' --password='+password+' --enabled=true"'
   end
   
 end
