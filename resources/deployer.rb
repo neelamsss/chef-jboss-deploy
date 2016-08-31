@@ -1,44 +1,43 @@
 resource_name :deployer
-
-property :_file_path, String, default: '/tmp'
-property :_owner, String, default: 'root'
-property :_group, String, default: 'root'
-property :_mode, String, default: '644'
-property :_package_url, String
-property :_checksum, String
-property :_module_name, String
-property :_host, String, default: '127.0.0.1'
-property :_offset, Integer, default: 0
-property :_jboss_mode, String, default: 'standalone'
-property :_jboss_home, String, default: '/opt/jboss/'
+property :file_loc, String, default: '/tmp'
+property :owner, String, default: 'root'
+property :group, String, default: 'root'
+property :mode, String, default: '644'
+property :package_url, String
+property :checksum, String
+property :module_name, String
+property :host, String, default: '127.0.0.1'
+property :offset, Integer, default: 0
+property :jboss_mode, String, default: 'standalone'
+property :jboss_home, String, default: '/opt/jboss/'
 property :mgmtport, Integer, default: 9999
-property :_sub_deploy, String, default: lazy {
-    _jboss_mode == 'domain' ? '--server-groups=main-server-group' : ''
+property :sub_deploy, String, default: lazy {
+    jboss_mode == 'domain' ? '--server-groups=main-server-group' : ''
   }
-property :_sub_undeploy, String, default: lazy {
-    _jboss_mode == 'domain' ? '--all-relevant-server-groups' : ''
+property :sub_undeploy, String, default: lazy {
+    jboss_mode == 'domain' ? '--all-relevant-server-groups' : ''
   }
 
 action :deploy do
   
-   remote_file _file_path+'/'+_module_name do
-     source _package_url
-     owner _owner
-     group _group
-     mode _mode
+   remote_file file_loc+'/'+module_name do
+     source package_url
+     owner owner
+     group group
+     mode mode
      action :create
    end
   
    execute 'jboss-cli-deploy' do
- 	user _owner
- 	command _jboss_home+
+ 	user owner
+ 	command jboss_home+
 	    '/bin/jboss-cli.sh --connect controller='+
-	    _host+':'+
-	    "#{mgmtport+_offset}"+
+	    host+':'+
+	    "#{mgmtport+offset}"+
 	    ' --commands="deploy '+
-	    _file_path+'//'+
-	    _module_name+' '+
-	    _sub_deploy+'"'
+	    file_loc+'//'+
+	    module_name+' '+
+	    sub_deploy+'"'
    end
    
 end
@@ -46,14 +45,14 @@ end
 action :undeploy do
   
    execute 'jboss-cli-undeploy' do
- 	user _owner
- 	command _jboss_home+
+ 	user owner
+ 	command jboss_home+
 	    '/bin/jboss-cli.sh --connect controller='+
-	    _host+':'+
-	    "#{mgmtport+_offset}"+
+	    host+':'+
+	    "#{mgmtport+offset}"+
 	    ' --commands="undeploy '+
-	    _module_name+' '+
-	    _sub_undeploy+'"'
+	    module_name+' '+
+	    sub_undeploy+'"'
    end
    
 end
