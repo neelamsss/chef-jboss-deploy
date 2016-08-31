@@ -30,13 +30,13 @@ The full syntax for all the properties that are available to the `deployer` reso
 deployer 'name' do
     
       file_loc		String, default: '/tmp'
-      owner		String, default: 'root'
-      group		String, default: 'root'
-      mode		String, default: '644'
+      owner		    String, default: 'root'
+      group		    String, default: 'root'
+      mode		    String, default: '644'
       package_url	String
       checksum		String
       module_name	String
-      host		String, default: '127.0.0.1'
+      host		    String, default: '127.0.0.1'
       offset		Integer, default: 0
       jboss_mode	String, default: 'standalone'
       jboss_home	String, default: '/opt/jboss/'
@@ -70,17 +70,17 @@ The full syntax for all the properties that are available to the `jmodule` resou
 
 jmodule 'name' do
     
-      owner		String, default: 'root'
-      module_name	String
-      host		String, default: '127.0.0.1'
-      offset		Integer, default: 0
-      jboss_home	String, default: '/opt/jboss/'
-      mgmtport		Integer, default: 9999
-      jdbc_loc		String
-      dep_list		String
+      owner		        String, default: 'root'
+      module_name	    String
+      host		        String, default: '127.0.0.1'
+      offset		    Integer, default: 0
+      jboss_home	    String, default: '/opt/jboss/'
+      mgmtport		    Integer, default: 9999
+      jdbc_loc		    String
+      dep_list		    String
       jdbc_driver_name	String
-      class_name	String
-      action		Symbol, default: create
+      class_name	    String
+      action		    Symbol, default: create
       
 end
 
@@ -108,18 +108,18 @@ The full syntax for all the properties that are available to the `datasource` re
 
 datasource 'name' do
 
-      owner		String, default: 'root'
-      host		String, default: '127.0.0.1'
-      offset		Integer, default: 0
-      jboss_home	String, default: '/opt/jboss/'
-      mgmtport		Integer, default: 9999
-      jdbc_loc		String
-      dep_list		String
+      owner		        String, default: 'root'
+      host		        String, default: '127.0.0.1'
+      offset		    Integer, default: 0
+      jboss_home	    String, default: '/opt/jboss/'
+      mgmtport		    Integer, default: 9999
+      jdbc_loc		    String
+      dep_list		    String
       jdbc_driver_name	String
-      class_name	String
-      username		String
-      password		String
-      action		Symbol, default: create
+      class_name	    String
+      username		    String
+      password		    String
+      action		    Symbol, default: create
       
 end
 
