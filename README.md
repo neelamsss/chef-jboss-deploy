@@ -66,6 +66,7 @@ where
 ### jmodule
 
 (Supports on standalone and ~~domain~~ modes.)
+
 The full syntax for all the properties that are available to the `jmodule` resource is:
 
 ```
@@ -105,6 +106,7 @@ where
 ### datasource
 
 (Supports on standalone and ~~domain~~ modes.)
+
 The full syntax for all the properties that are available to the `datasource` resource is:
 
 ```
