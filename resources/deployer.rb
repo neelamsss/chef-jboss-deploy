@@ -38,6 +38,13 @@ action :deploy do
 	    file_loc+'//'+
 	    module_name+' '+
 	    sub_deploy+'"'
+
+        not_if jboss_home+
+            '/bin/jboss-cli.sh --connect controller='+
+            host+':'+
+            "#{mgmtport+offset}"+
+            ' --commands="deploy -l"'+
+            '|grep '+module_name, :user=> owner
    end
    
 end
@@ -53,6 +60,13 @@ action :undeploy do
 	    ' --commands="undeploy '+
 	    module_name+' '+
 	    sub_undeploy+'"'
+
+        only_if jboss_home+
+            '/bin/jboss-cli.sh --connect controller='+
+            host+':'+
+            "#{mgmtport+offset}"+
+            ' --commands="deploy -l"'+
+            '|grep '+module_name, :user=> owner
    end
    
 end

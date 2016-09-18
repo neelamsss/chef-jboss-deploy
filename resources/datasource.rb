@@ -24,6 +24,13 @@ action :create do
       jndi_name+' --name='+dt_name+' --connection-url='+
       connection_url+' --driver-name='+jdbc_driver_name+
       ' --user-name='+username+' --password='+password+' --enabled=true"'
+    
+    not_if jboss_home+
+      '/bin/jboss-cli.sh --connect controller='+
+      host+':'+
+      "#{mgmtport+offset}"+
+      ' --commands="/subsystem=datasources:read-resource(recursive=true)"'+
+      '|grep "jndi-name" |grep "'+jndi_name+'"', :user=> owner
   end
   
 end

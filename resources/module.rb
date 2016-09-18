@@ -20,6 +20,13 @@ action :create do
       host+':'+
       "#{mgmtport+offset}"+
       ' --commands="module add --name='+module_name+' --resources='+jdbc_loc+' --dependencies='+dep_list+'"'
+    
+    not_if jboss_home+
+      '/bin/jboss-cli.sh --connect controller='+
+      host+':'+
+      "#{mgmtport+offset}"+
+      ' --commands="/subsystem=datasources:installed-drivers-list"'+
+      '|grep "driver-name" |grep "\"'+jdbc_driver_name+'\""', :user=> owner
   end
   
   execute 'install-jdbc' do
@@ -32,6 +39,13 @@ action :create do
       jdbc_driver_name+':add(driver-name='+
       jdbc_driver_name+',driver-module-name='+
       module_name+',driver-class-name='+class_name+')"'
+
+    not_if jboss_home+
+      '/bin/jboss-cli.sh --connect controller='+
+      host+':'+
+      "#{mgmtport+offset}"+
+      ' --commands="/subsystem=datasources:installed-drivers-list"'+
+      '|grep "driver-name" |grep "\"'+jdbc_driver_name+'\""', :user=> owner
   end
 
 end
